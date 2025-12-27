@@ -1,7 +1,19 @@
 import { Header } from './components/Header'
 import { About } from './components/About'
+import { Skills } from './components/Skills'
+import type { Skill } from './components/Skills'
 
 function App() {
+  const mySkills: Skill[] = [
+    { id: 1, name: 'React', level: 'advanced' },
+    { id: 2, name: 'TypeScript', level: 'intermediate' },
+    { id: 3, name: 'CSS / SCSS', level: 'advanced' },
+    { id: 4, name: 'Node.js', level: 'intermediate' },
+    { id: 5, name: 'Git', level: 'advanced' },
+    { id: 6, name: 'Docker', level: 'beginner' },
+    { id: 7, name: 'Python', level: 'beginner' },
+  ]
+
   return (
     <div className="app">
       <Header
@@ -14,6 +26,7 @@ function App() {
         <p>我是一名熱愛程式開發的前端工程師，專注於 React 生態系與 Web 技術的研究。</p>
         <p>我喜歡挑戰複雜的邏輯問題，並致力於打造兼具效能與使用者體驗的高品質網頁應用程式。</p>
       </About>
+      <Skills skills={mySkills} />
     </div>
   )
 }
