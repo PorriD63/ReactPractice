@@ -1,3 +1,4 @@
+import { useState } from 'react'
 import { Header } from './components/Header'
 import { About } from './components/About'
 import { Skills } from './components/Skills'
@@ -6,6 +7,8 @@ import { Experience } from './components/Experience'
 import type { ExperienceItem } from './components/Experience'
 
 function App() {
+  const [activeExpId, setActiveExpId] = useState<number | null>(1) // 預設展開第一筆
+
   const mySkills: Skill[] = [
     { id: 1, name: 'React', level: 'advanced' },
     { id: 2, name: 'TypeScript', level: 'intermediate' },
@@ -61,7 +64,12 @@ function App() {
         <div className="container" style={{ maxWidth: '800px', margin: '0 auto' }}>
           <h2 style={{ fontSize: '2rem', marginBottom: '1.5rem', color: '#333' }}>工作經歷</h2>
           {experiences.map(exp => (
-            <Experience key={exp.id} experience={exp} />
+            <Experience 
+              key={exp.id} 
+              experience={exp} 
+              isActive={activeExpId === exp.id}
+              onToggle={() => setActiveExpId(activeExpId === exp.id ? null : exp.id)}
+            />
           ))}
         </div>
       </section>

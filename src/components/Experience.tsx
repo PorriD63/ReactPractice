@@ -1,4 +1,3 @@
-import { useState } from 'react'
 import './Experience.css'
 
 export interface ExperienceItem {
@@ -12,16 +11,16 @@ export interface ExperienceItem {
 
 interface ExperienceProps {
   experience: ExperienceItem
+  isActive: boolean
+  onToggle: () => void
 }
 
-export function Experience({ experience }: ExperienceProps) {
-  const [isExpanded, setIsExpanded] = useState(false)
-
+export function Experience({ experience, isActive, onToggle }: ExperienceProps) {
   return (
-    <div className={`experience-item ${isExpanded ? 'expanded' : ''}`}>
+    <div className={`experience-item ${isActive ? 'expanded' : ''}`}>
       <div
         className="experience-header"
-        onClick={() => setIsExpanded(!isExpanded)}
+        onClick={onToggle}
       >
         <div className="header-main">
           <h3>{experience.position}</h3>
@@ -31,7 +30,7 @@ export function Experience({ experience }: ExperienceProps) {
         <div className="header-meta">
           <p className="period">{experience.period}</p>
           <span className="toggle-icon">
-            {isExpanded ? '▲' : '▼'}
+            {isActive ? '▲' : '▼'}
           </span>
         </div>
       </div>
