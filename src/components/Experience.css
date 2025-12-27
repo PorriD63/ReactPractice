@@ -1,0 +1,110 @@
+/* 每個經歷項目的容器 */
+.experience-item {
+  background: white;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+  margin-bottom: 1rem;
+  overflow: hidden; /* 確保內容展開時不會跑出圓角 */
+  transition: box-shadow 0.3s ease;
+}
+
+.experience-item:hover {
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.experience-item.expanded {
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  border-left: 4px solid #667eea; /* 展開時左側加個藍條提示 */
+}
+
+/* 點擊區域 (Header) */
+.experience-header {
+  padding: 1.5rem;
+  cursor: pointer;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  user-select: none; /* 防止點擊時選取文字 */
+}
+
+.header-main h3 {
+  margin: 0 0 0.5rem 0;
+  color: #333;
+  font-size: 1.25rem;
+}
+
+.header-main .company {
+  margin: 0;
+  color: #666;
+  font-size: 1rem;
+}
+
+.header-meta {
+  text-align: right;
+  min-width: 120px;
+}
+
+.header-meta .period {
+  margin: 0 0 0.5rem 0;
+  color: #888;
+  font-size: 0.9rem;
+}
+
+.toggle-icon {
+  display: inline-block;
+  color: #667eea;
+  font-size: 0.8rem;
+  transition: transform 0.3s;
+}
+
+/* 詳細內容區域 - 預設收合狀態 */
+.experience-details {
+  max-height: 0;
+  opacity: 0;
+  padding: 0 1.5rem; /* 上下 padding 設為 0，左右保留 */
+  overflow: hidden;
+  border-top: 1px solid transparent; /* 邊框也要隱藏 */
+  transition: all 0.4s ease-in-out; /* 設定轉場時間 */
+}
+
+/* 當外層有 .expanded class 時的展開狀態 */
+.expanded .experience-details {
+  max-height: 500px; /* 設定一個足夠大的值 */
+  opacity: 1;
+  padding-bottom: 1.5rem; /* 恢復下方 padding */
+  border-top: 1px solid #eee; /* 恢復邊框 */
+}
+
+.description {
+  margin: 1rem 0;
+  color: #444;
+  line-height: 1.6;
+}
+
+.experience-details ul {
+  margin: 0;
+  padding-left: 1.5rem;
+  color: #555;
+}
+
+.experience-details li {
+  margin-bottom: 0.5rem;
+  line-height: 1.6;
+}
+
+/* 手機版適配 */
+@media (max-width: 600px) {
+  .experience-header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .header-meta {
+    text-align: left;
+    margin-top: 1rem;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+}

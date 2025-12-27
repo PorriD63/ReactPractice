@@ -290,8 +290,9 @@ const mySkills: Skill[] = [
 ```tsx
 // src/components/Experience.tsx
 import { useState } from 'react'
+import './Experience.css'
 
-interface ExperienceItem {
+export interface ExperienceItem {
   id: number
   company: string
   position: string
@@ -313,17 +314,22 @@ export function Experience({ experience }: ExperienceProps) {
         className="experience-header"
         onClick={() => setIsExpanded(!isExpanded)}
       >
-        <h3>{experience.position}</h3>
-        <p className="company">{experience.company}</p>
-        <p className="period">{experience.period}</p>
-        <button className="toggle-btn">
-          {isExpanded ? '▲ 收合' : '▼ 展開'}
-        </button>
+        <div className="header-main">
+          <h3>{experience.position}</h3>
+          <p className="company">{experience.company}</p>
+        </div>
+        
+        <div className="header-meta">
+          <p className="period">{experience.period}</p>
+          <span className="toggle-icon">
+            {isExpanded ? '▲' : '▼'}
+          </span>
+        </div>
       </div>
 
       {isExpanded && (
         <div className="experience-details">
-          <p>{experience.description}</p>
+          <p className="description">{experience.description}</p>
           <ul>
             {experience.highlights.map((highlight, index) => (
               <li key={index}>{highlight}</li>
@@ -381,9 +387,9 @@ const experiences: ExperienceItem[] = [
 ```
 
 **練習任務：**
-- [ ] 建立基本的展開/收合功能
-- [ ] 加入過場動畫
-- [ ] 嘗試改用滑鼠懸停（`onMouseEnter`/`onMouseLeave`）
+- [x] 建立基本的展開/收合功能
+- [x] 加入過場動畫
+- [x] 嘗試改用滑鼠懸停（`onMouseEnter`/`onMouseLeave`）
 - [ ] 思考：如果只想同時展開一個項目，該如何實作？（提示：狀態提升）
 
 ---
