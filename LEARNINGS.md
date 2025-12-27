@@ -168,10 +168,10 @@ export function About({ title, children }: AboutProps) {
 ```
 
 **練習任務：**
-- [ ] 建立基本版 About 元件
-- [ ] 嘗試使用 `children` 版本
-- [ ] 撰寫自我介紹內容
-- [ ] 加入段落樣式（行高、字距）
+- [x] 建立基本版 About 元件
+- [x] 嘗試使用 `children` 版本
+- [x] 撰寫自我介紹內容
+- [x] 加入段落樣式（行高、字距）
 
 ---
 
